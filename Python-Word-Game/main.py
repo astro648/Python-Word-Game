@@ -1,4 +1,4 @@
-'''
+"""
 - CSV of English words is used
 - Normal difficulty: words from 5-15 characters and 1-3 blank spaces
 - Hard difficulty: 10+ character words and 5 blank spaces
@@ -6,7 +6,7 @@
 - Pass & Play: 2 players can play and compete to win
 - Each round won is +1 score
 - 3 health at start of each game, each round lost is -1 health
-'''
+"""
 
 
 # Functions
@@ -24,7 +24,7 @@ def title_art():
 
 
 class GameSelect:
-    def __init__(self,mode,difficulty):
+    def __init__(self, mode, difficulty):
         self.mode = mode
         self.difficulty = difficulty
 
@@ -58,8 +58,9 @@ def game_difficulty_choice(retries_game_difficulty):
         print("Invalid choice, try again")
         game_mode_choice(1)
 
+
 # Run Functions
 title_art()
 game_mode_return = game_mode_choice(0)
 game_difficulty_return = game_difficulty_choice(0)
-game = GameSelect(game_mode_return,game_difficulty_return)
+game = GameSelect(game_mode_return, game_difficulty_return)
