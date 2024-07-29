@@ -29,6 +29,12 @@ class GameSelect:
         self.difficulty = difficulty
 
 
+class HealthInit:
+    def __init__(self, health_p1, health_p2):
+        self.health_p1 = health_p1
+        self.health_p2 = health_p2
+
+
 def game_mode_choice(retries_game_mode):
     if retries_game_mode != 1:
         print("Choose Game Mode")
@@ -64,3 +70,4 @@ title_art()
 game_mode_return = game_mode_choice(0)
 game_difficulty_return = game_difficulty_choice(0)
 game = GameSelect(game_mode_return, game_difficulty_return)
+health = HealthInit(3, 3)
