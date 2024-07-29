@@ -23,7 +23,15 @@ def title_art():
     """)
 
 
-'''def game_mode_choice(retries_game_mode, game_mode):
+class GameSelect:
+    def __init__(self,mode,difficulty):
+        self.mode = mode
+        self.difficulty = difficulty
+
+game_mode = None
+
+
+def game_mode_choice(retries_game_mode):
     if retries_game_mode != 1:
         print("Choose Game Mode")
         print("[1] Single-Player")
@@ -35,9 +43,25 @@ def title_art():
         return game_mode
     else:
         print("Invalid choice, try again")
-        retries_game_mode = 1
+        game_mode_choice(1)
+
+
+def game_difficulty_choice(retries_game_difficulty):
+    if retries_game_difficulty != 1:
+        print("Choose Game Difficulty")
+        print("[1] Normal")
+        print("[2] Hard")
+    game_difficulty = int(input("> "))
+    if game_difficulty == 1:
+        return game_difficulty
+    elif game_difficulty == 2:
+        return game_difficulty
+    else:
+        print("Invalid choice, try again")
         game_mode_choice(1)
 
 # Run Functions
 title_art()
-game_mode = game_mode_choice(0, 0)'''
+game_mode_return = game_mode_choice(0)
+game_difficulty_return = game_difficulty_choice(0)
+game = GameSelect(game_mode_return,game_difficulty_return)
