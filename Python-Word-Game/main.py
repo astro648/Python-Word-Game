@@ -28,8 +28,6 @@ class GameSelect:
         self.mode = mode
         self.difficulty = difficulty
 
-game_mode = None
-
 
 def game_mode_choice(retries_game_mode):
     if retries_game_mode != 1:
