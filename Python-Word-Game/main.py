@@ -23,29 +23,21 @@ def title_art():
     """)
 
 
-def game_choice(retries_game_mode):
+def game_mode_choice(retries_game_mode, game_mode):
     if retries_game_mode != 1:
         print("Choose Game Mode")
         print("[1] Single-Player")
         print("[2] Pass & Play 2-Player")
     game_mode = int(input("> "))
     if game_mode == 1:
-        single_player()
+        return game_mode
     elif game_mode == 2:
-        two_player()
+        return game_mode
     else:
         print("Invalid choice, try again")
         retries_game_mode = 1
-        game_choice(1)
-
-
-def single_player():
-    print("Single-Player")
-
-
-def two_player():
-    print("Single-Player")
+        game_mode_choice(1)
 
 # Run Functions
 title_art()
-game_choice(0)
+game_mode = game_mode_choice(0, 0)
