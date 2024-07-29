@@ -23,7 +23,7 @@ def title_art():
     """)
 
 
-def game_mode_choice(retries_game_mode, game_mode):
+'''def game_mode_choice(retries_game_mode, game_mode):
     if retries_game_mode != 1:
         print("Choose Game Mode")
         print("[1] Single-Player")
@@ -40,4 +40,4 @@ def game_mode_choice(retries_game_mode, game_mode):
 
 # Run Functions
 title_art()
-game_mode = game_mode_choice(0, 0)
+game_mode = game_mode_choice(0, 0)'''
