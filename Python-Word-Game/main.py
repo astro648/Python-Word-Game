@@ -65,8 +65,8 @@ def game_difficulty_choice(retries_game_difficulty):
         game_mode_choice(1)
 
 
-def game_play(mode,difficulty,health_p1,health_p2):
-    print(mode,difficulty,health_p1,health_p2)
+def game_play(mode, difficulty, health_p1, health_p2):
+    print(mode, difficulty, health_p1, health_p2)
 
 
 # Run Functions
@@ -75,4 +75,4 @@ game_mode_return = game_mode_choice(0)
 game_difficulty_return = game_difficulty_choice(0)
 game = GameSelect(game_mode_return, game_difficulty_return)
 health = HealthInit(3, 3)
-game_play(game.mode,game.difficulty,health.p1,health.p2)
+game_play(game.mode, game.difficulty, health.p1, health.p2)
