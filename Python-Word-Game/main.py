@@ -10,6 +10,7 @@
 # Imports
 import json
 import random
+import sys
 
 # Load Words
 with open('words_dictionary.json') as json_file:
@@ -104,14 +105,34 @@ def game_play(mode, difficulty, health_p1, health_p2, points_p1, points_p2):
                     print("Correct answer: ", random_word)
                     print("Health:", health_p1, "| Points:", points_p1)
                     print("")
+        print("Game Over!")
+        print("Points:", points_p1)
+        try_again(0)
+
+
+def try_again(choice):
+    print("Try Again? [Y/N]")
+    try_again_choice = input("> ")
+    if try_again_choice == "Y" or try_again_choice == "y":
+        run()
+        choice = 1
+    if try_again_choice == "N" or try_again_choice == "n":
+        sys.exit(0)
+    else:
+        if choice != 1:
+            print("Invalid input.")
+            try_again(0)
+
+
+def run():
+    game_mode_return = game_mode_choice(0)
+    game_difficulty_return = game_difficulty_choice(0)
+    game = GameSelect(game_mode_return, game_difficulty_return)
+    health = HealthInit(3, 3)
+    points = PointsInit(0, 0)
+    game_play(game.mode, game.difficulty, health.p1, health.p2, points.p1, points.p2)
 
 
 # Run Functions
-# run function to load words
 title_art()
-game_mode_return = game_mode_choice(0)
-game_difficulty_return = game_difficulty_choice(0)
-game = GameSelect(game_mode_return, game_difficulty_return)
-health = HealthInit(3, 3)
-points = PointsInit(0, 0)
-game_play(game.mode, game.difficulty, health.p1, health.p2, points.p1, points.p2)
+run()
