@@ -10,12 +10,29 @@
 # Imports
 import json
 import random
-from collections import Counter
-
 
 # Load Words
 with open('words_dictionary.json') as json_file:
     words_data = json.load(json_file)
+
+
+# Classes
+class GameSelect:
+    def __init__(self, mode, difficulty):
+        self.mode = mode
+        self.difficulty = difficulty
+
+
+class HealthInit:
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2
+
+
+class PointsInit:
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2
 
 
 # Functions
@@ -32,17 +49,6 @@ def title_art():
     """)
     print("Disclaimer: words may be profane due to the file used containing several hundred thousand words")
 
-
-class GameSelect:
-    def __init__(self, mode, difficulty):
-        self.mode = mode
-        self.difficulty = difficulty
-
-
-class HealthInit:
-    def __init__(self, p1, p2):
-        self.p1 = p1
-        self.p2 = p2
 
 def game_mode_choice(retries_game_mode):
     if retries_game_mode != 1:
@@ -74,13 +80,13 @@ def game_difficulty_choice(retries_game_difficulty):
         game_mode_choice(1)
 
 
-def game_play(mode, difficulty, health_p1, health_p2):
+def game_play(mode, difficulty, health_p1, health_p2, points_p1, points_p2):
     if mode == 1 & difficulty == 1:
         while health_p1 > 0:
             random_word = random.choice(list(words_data.keys()))
             length = len(random_word)
             if 5 <= length <= 8:
-                positions = random.sample(range(len(random_word)),random.randint(2,3))
+                positions = random.sample(range(len(random_word)), random.randint(2, 3))
                 characters_in_word = list(random_word)
                 for i in positions:
                     characters_in_word[i] = '_'
@@ -99,4 +105,5 @@ game_mode_return = game_mode_choice(0)
 game_difficulty_return = game_difficulty_choice(0)
 game = GameSelect(game_mode_return, game_difficulty_return)
 health = HealthInit(3, 3)
-game_play(game.mode, game.difficulty, health.p1, health.p2)
+points = PointsInit(0, 0)
+game_play(game.mode, game.difficulty, health.p1, health.p2, points.p1, points.p2)
