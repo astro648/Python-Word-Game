@@ -7,10 +7,15 @@
 - Each round won is +1 score
 - 3 health at start of each game, each round lost is -1 health
 """
+# Imports
+import json
 
 
 # Functions
-# load json of words as dictionary
+def load_words():
+    with open('words_dictionary.json') as json_file:
+        data = json.load(json_file)
+    return data
 
 
 def title_art():
