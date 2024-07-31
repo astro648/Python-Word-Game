@@ -134,6 +134,64 @@ def game_play(mode, difficulty, health_p1, health_p2, points_p1, points_p2):
         print("Game Over!")
         print("Points:", points_p1)
         try_again(0)
+    elif mode == 2 and difficulty == 1:
+        while health_p1 > 0 and health_p2 > 0:
+            print("PLAYER 1'S TURN")
+            random_word = random.choice(list(words_data.keys()))
+            length = len(random_word)
+            if 5 <= length <= 8:
+                positions = random.sample(range(len(random_word)), 1)
+                characters_in_word = list(random_word)
+                for i in positions:
+                    characters_in_word[i] = '_'
+                replaced_word = ''.join(characters_in_word)
+                print(replaced_word)
+                word_guess = input("Enter your guess: ")
+                if word_guess == random_word:
+                    points_p1 = points_p1 + 1
+                    print("Correct!")
+                    print("Health:", health_p1, "| Points:", points_p1)
+                    print("")
+                elif word_guess != random_word:
+                    health_p1 = health_p1 - 1
+                    print("Incorrect!")
+                    print("Correct answer: ", random_word)
+                    print("Health:", health_p1, "| Points:", points_p1)
+                    print("")
+            print("PLAYER 2'S TURN")
+            random_word = random.choice(list(words_data.keys()))
+            length = len(random_word)
+            if 5 <= length <= 8:
+                positions = random.sample(range(len(random_word)), 1)
+                characters_in_word = list(random_word)
+                for i in positions:
+                    characters_in_word[i] = '_'
+                replaced_word = ''.join(characters_in_word)
+                print(replaced_word)
+                word_guess = input("Enter your guess: ")
+                if word_guess == random_word:
+                    points_p2 = points_p2 + 1
+                    print("Correct!")
+                    print("Health:", health_p2, "| Points:", points_p2)
+                    print("")
+                elif word_guess != random_word:
+                    health_p2 = health_p2 - 1
+                    print("Incorrect!")
+                    print("Correct answer: ", random_word)
+                    print("Health:", health_p2, "| Points:", points_p2)
+                    print("")
+        print("Game Over!")
+        if points_p1 > points_p2:
+            print("Player 1 won!")
+            print("P1 Points:", points_p1, "| P2 Points:", points_p2)
+        elif points_p1 < points_p2:
+            print("Player 2 won!")
+            print("P1 Points:", points_p1, "| P2 Points:", points_p2)
+        elif points_p1 == points_p2:
+            print("The game was a tie!")
+            print("P1 Points:", points_p1, "| P2 Points:", points_p2)
+        try_again(0)
+
 
 
 def try_again(choice):
