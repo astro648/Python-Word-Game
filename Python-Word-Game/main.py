@@ -1,7 +1,7 @@
 """
 - JSON of English words is used
-- Normal difficulty: words from 5-15 characters and 1-3 blank spaces
-- Hard difficulty: 10+ character words and 5 blank spaces
+- Normal difficulty: words from 5-8 characters and 2-3 blank spaces
+- Hard difficulty: 8+ character words and 5 blank spaces
 - Single-Player: one person plays
 - Pass & Play: 2 players can play and compete to win
 - Each round won is +1 score
@@ -9,6 +9,8 @@
 """
 # Imports
 import json
+import random
+from collections import Counter
 
 
 # Load Words
@@ -42,7 +44,6 @@ class HealthInit:
         self.p1 = p1
         self.p2 = p2
 
-
 def game_mode_choice(retries_game_mode):
     if retries_game_mode != 1:
         print("Choose Game Mode")
@@ -74,7 +75,21 @@ def game_difficulty_choice(retries_game_difficulty):
 
 
 def game_play(mode, difficulty, health_p1, health_p2):
-    print(mode, difficulty, health_p1, health_p2)
+    if mode == 1 & difficulty == 1:
+        while health_p1 > 0:
+            random_word = random.choice(list(words_data.keys()))
+            length = len(random_word)
+            if 5 <= length <= 8:
+                positions = random.sample(range(len(random_word)),random.randint(2,3))
+                characters_in_word = list(random_word)
+                for i in positions:
+                    characters_in_word[i] = '_'
+                replaced_word = ''.join(characters_in_word)
+                print(random_word)
+                print(replaced_word)
+                word_guess = input("Enter your guess: ")
+                if word_guess == random_word:
+                    print("good job")
 
 
 # Run Functions
