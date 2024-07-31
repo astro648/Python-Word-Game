@@ -1,7 +1,7 @@
 """
 - JSON of English words is used
 - Normal difficulty: words from 5-8 characters and 1 blank space
-- Hard difficulty: 8+ character words and 5 blank spaces
+- Hard difficulty: 8+ character words and 3 blank spaces
 - Single-Player: one person plays
 - Pass & Play: 2 players can play and compete to win
 - Each round won is +1 score
@@ -48,12 +48,12 @@ def title_art():
     ━━━━━┏━┛┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ━━━━━┗━━┛━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     """)
-    print("Disclaimer: words may be profane due to the file used containing several hundred thousand words")
+    print("Disclaimer: words may be profane due to the word dictionary used containing several hundred thousand words.")
 
 
 def game_mode_choice(retries_game_mode):
     if retries_game_mode != 1:
-        print("Choose Game Mode")
+        print("Choose Game Mode:")
         print("[1] Single-Player")
         print("[2] Pass & Play 2-Player")
     game_mode = int(input("> "))
@@ -68,7 +68,7 @@ def game_mode_choice(retries_game_mode):
 
 def game_difficulty_choice(retries_game_difficulty):
     if retries_game_difficulty != 1:
-        print("Choose Game Difficulty")
+        print("Choose Game Difficulty:")
         print("[1] Normal")
         print("[2] Hard")
     game_difficulty = int(input("> "))
@@ -82,12 +82,38 @@ def game_difficulty_choice(retries_game_difficulty):
 
 
 def game_play(mode, difficulty, health_p1, health_p2, points_p1, points_p2):
-    if mode == 1 & difficulty == 1:
+    if mode == 1 and difficulty == 1:
         while health_p1 > 0:
             random_word = random.choice(list(words_data.keys()))
             length = len(random_word)
             if 5 <= length <= 8:
                 positions = random.sample(range(len(random_word)), 1)
+                characters_in_word = list(random_word)
+                for i in positions:
+                    characters_in_word[i] = '_'
+                replaced_word = ''.join(characters_in_word)
+                print(replaced_word)
+                word_guess = input("Enter your guess: ")
+                if word_guess == random_word:
+                    points_p1 = points_p1 + 1
+                    print("Correct!")
+                    print("Health:", health_p1, "| Points:", points_p1)
+                    print("")
+                elif word_guess != random_word:
+                    health_p1 = health_p1 - 1
+                    print("Incorrect!")
+                    print("Correct answer: ", random_word)
+                    print("Health:", health_p1, "| Points:", points_p1)
+                    print("")
+        print("Game Over!")
+        print("Points:", points_p1)
+        try_again(0)
+    elif mode == 1 and difficulty == 2:
+        while health_p1 > 0:
+            random_word = random.choice(list(words_data.keys()))
+            length = len(random_word)
+            if 8 <= length:
+                positions = random.sample(range(len(random_word)), 3)
                 characters_in_word = list(random_word)
                 for i in positions:
                     characters_in_word[i] = '_'
