@@ -263,7 +263,6 @@ def game_play(mode, difficulty, health_p1, health_p2, points_p1, points_p2):
         try_again(0)
 
 
-
 def try_again(choice):
     print("Try Again? [Y/N]")
     try_again_choice = input("> ")
