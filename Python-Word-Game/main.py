@@ -11,13 +11,12 @@
 import json
 
 
+# Load Words
+with open('words_dictionary.json') as json_file:
+    words_data = json.load(json_file)
+
+
 # Functions
-def load_words():
-    with open('words_dictionary.json') as json_file:
-        data = json.load(json_file)
-    return data
-
-
 def title_art():
     print("""
     ┏━━━┓━━━━━━┏┓━┏┓━━━━━━━━━━━━━━┏┓┏┓┏┓━━━━━━━━━┏┓━━━━┏━━━┓━━━━━━━━━━━━━
