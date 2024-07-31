@@ -1,5 +1,5 @@
 """
-- CSV of English words is used
+- JSON of English words is used
 - Normal difficulty: words from 5-15 characters and 1-3 blank spaces
 - Hard difficulty: 10+ character words and 5 blank spaces
 - Single-Player: one person plays
@@ -10,6 +10,9 @@
 
 
 # Functions
+# load json of words as dictionary
+
+
 def title_art():
     print("""
     ┏━━━┓━━━━━━┏┓━┏┓━━━━━━━━━━━━━━┏┓┏┓┏┓━━━━━━━━━┏┓━━━━┏━━━┓━━━━━━━━━━━━━
@@ -71,6 +74,7 @@ def game_play(mode, difficulty, health_p1, health_p2):
 
 
 # Run Functions
+# run function to load words
 title_art()
 game_mode_return = game_mode_choice(0)
 game_difficulty_return = game_difficulty_choice(0)
