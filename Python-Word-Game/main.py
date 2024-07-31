@@ -21,6 +21,7 @@ def title_art():
     ━━━━━┏━┛┃━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     ━━━━━┗━━┛━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     """)
+    print("Disclaimer: words may be profane due to the file used containing several hundred thousand words")
 
 
 class GameSelect:
